@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace WebApplication1.Controllers
 {
     public class CalendarController : Controller
@@ -41,10 +42,21 @@ namespace WebApplication1.Controllers
                     con.Close();
                 }
             }
+
+          
+
+
             return View();
         }
 
+        public JsonResult WelcomeNote()
+        {
+            bool isAdmin = false;
+            //TODO: Check the user if it is admin or normal user, (true-Admin, false- Normal user)  
+            string output = isAdmin ? "Welcome to the Admin User" : "Welcome to the User";
 
+            return Json(output, JsonRequestBehavior.AllowGet);
+        }
 
     }
 }
